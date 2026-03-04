@@ -35,10 +35,10 @@
     a:hover { color: var(--primary-dark); }
     img { max-width: 100%; height: auto; display: block; }
 
-    /* ─── Home — scientific banner ───────────────────────── */
+    /* ─── Home ───────────────────────────────────────────── */
     #home { background: white; }
-    .hero-banner { width: 100%; height: 230px; overflow: hidden; background: #08181a; }
-    .hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .hero-banner { width: 100%; overflow: hidden; background: white; display: flex; justify-content: center; align-items: center; padding: 40px 28px 0; }
+    .hero-banner img { max-width: 860px; width: 100%; height: auto; display: block; border-radius: 10px; }
 
     /* ─── Nav ────────────────────────────────────────────── */
     #navbar {
@@ -212,7 +212,7 @@
     }
     .research-block h3 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--primary); margin-bottom: 14px; }
     .research-block p { color: var(--text-muted); line-height: 1.8; }
-    .research-figure { margin: 28px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: #08181a; }
+    .research-figure { margin: 28px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: white; }
     .research-figure img { width: 100%; height: auto; }
     .research-figure figcaption { padding: 12px 18px; font-size: 0.83rem; color: var(--text-muted); background: var(--bg); border-top: 1px solid var(--border); line-height: 1.6; }
     .research-goals { list-style: none; display: grid; gap: 11px; margin-top: 18px; }
@@ -225,6 +225,17 @@
        TEAM
     ════════════════════════════════════════════════════════ */
     #team { background: var(--bg); }
+    .team-location-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-bottom: 8px;
+    }
+    .team-location-badge.usc { background: #990000; color: white; }
+    .team-location-badge.uzh { background: #0053a0; color: white; }
+    .team-location-row { display: flex; align-items: center; gap: 6px; margin-bottom: 24px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; }
+    .team-location-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .team-location-dot.usc { background: #990000; }
+    .team-location-dot.uzh { background: #0053a0; }
+    .team-loc-label { margin-right: 6px; }
     .team-pi {
       display: grid; grid-template-columns: 1fr 1.5fr; overflow: hidden;
       background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px;
@@ -239,8 +250,8 @@
     .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 22px; }
     .team-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.3s; }
     .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .team-card-img { height: 210px; background: linear-gradient(135deg, var(--primary-light), #ddf0f0); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .team-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .team-card-img { height: auto; min-height: 180px; background: linear-gradient(135deg, var(--primary-light), #ddf0f0); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .team-card-img img { width: 100%; height: auto; object-fit: contain; display: block; }
     .team-card-avatar { width: 74px; height: 74px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 700; color: white; font-family: 'Playfair Display', serif; }
     .team-card-body { padding: 20px 22px; }
     .team-card-role { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 5px; }
@@ -359,18 +370,62 @@
     footer a { color: rgba(255,255,255,0.65); }
     footer a:hover { color: white; }
 
-    /* ─── Responsive ─────────────────────────────────────── */
+    /* ─── Responsive — tablet ────────────────────────────── */
+    @media (max-width: 1024px) {
+      .team-pi { grid-template-columns: 1fr 1.3fr; }
+      .section-inner { max-width: 100%; }
+    }
+    /* ─── Responsive — mobile ────────────────────────────── */
     @media (max-width: 768px) {
+      :root { --nav-h: 60px; }
       .nav-links { display: none; }
-      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: var(--nav-h); left: 0; right: 0; background: white; padding: 14px 20px 20px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); gap: 4px; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: var(--nav-h); left: 0; right: 0; background: white; padding: 14px 20px 20px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); gap: 4px; z-index: 999; }
       .hamburger { display: flex; }
+      .nav-social { display: none; }
+      .nav-logo-text { font-size: 1rem; }
+
+      /* home */
+      .hero-banner { padding: 24px 16px 0; }
+      .hero-body { padding: 32px 20px 44px; }
+      .hero-body h1 { font-size: 1.85rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .hero-goals { padding: 18px 20px; }
+      .home-goal-item { padding: 10px 14px; font-size: 0.87rem; }
+      .home-research-fig img { max-width: 100%; }
+      .hero-social { justify-content: center; }
+      .keyword-cloud { gap: 6px; }
+
+      /* sections */
+      .section-wrap { padding: 56px 18px; }
+      .section-title { font-size: 1.8rem; }
+
+      /* research */
+      .research-block { padding: 22px 18px; }
+      .research-figure img { border-radius: 6px; }
+
+      /* team */
       .team-pi { grid-template-columns: 1fr; }
-      .team-pi-img { height: 280px; }
-      .team-pi-info { padding: 26px; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .research-block { padding: 26px 22px; }
-      .team-join { padding: 30px 26px; }
-      .section-wrap { padding: 70px 20px; }
+      .team-pi-img { height: 260px; }
+      .team-pi-info { padding: 22px; }
+      .team-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+      .team-card-img { height: 180px; }
+      .team-join { padding: 26px 22px; flex-direction: column; text-align: center; }
+
+      /* publications */
+      .pub-cards-grid { grid-template-columns: 1fr; gap: 20px; }
+      .pub-list-cards-grid { grid-template-columns: 1fr; }
+      .pub-toggle-btn { font-size: 0.85rem; padding: 9px 20px; }
+
+      /* contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 22px; }
+      .contact-card { padding: 26px 22px; }
+    }
+    /* ─── Responsive — small phone ───────────────────────── */
+    @media (max-width: 420px) {
+      .hero-body h1 { font-size: 1.5rem; }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .pub-link-btn { font-size: 0.8rem; padding: 7px 14px; }
+      .team-card-body { padding: 16px; }
     }
   </style>
 </head>
@@ -387,8 +442,8 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#home"         data-section="home"         class="active">Home</a></li>
       <li><a href="#research"     data-section="research">Research</a></li>
-      <li><a href="#team"         data-section="team">Team</a></li>
       <li><a href="#publications" data-section="publications">Publications</a></li>
+      <li><a href="#team"         data-section="team">Team</a></li>
       <li><a href="#contact"      data-section="contact">Contact</a></li>
     </ul>
 
@@ -515,26 +570,28 @@
       <span class="kw lg c-teal"  style="--kd:6.5s;--kdelay:1s;--kfloat:-5px">Single-cell RNA-seq</span>
       <span class="kw lg c-slate" style="--kd:7.5s;--kdelay:1.5s;--kfloat:-6px">Neurovascular interactions</span>
       <span class="kw lg c-blue"  style="--kd:6s;--kdelay:2s;--kfloat:-4px">Translational neuroscience</span>
-      <span class="kw lg c-teal"  style="--kd:8.5s;--kdelay:2.5s;--kfloat:-5px">CRISPR screening</span>
+      <span class="kw lg c-teal"  style="--kd:8.5s;--kdelay:2.5s;--kfloat:-5px">CRISPR &amp; gene editing</span>
       <span class="kw md c-slate" style="--kd:7s;--kdelay:3s;--kfloat:-4px">iPSC-derived neural stem cells</span>
-      <span class="kw md c-teal"  style="--kd:6s;--kdelay:3.5s;--kfloat:-5px">Blood–brain barrier biology</span>
+      <span class="kw md c-teal"  style="--kd:6s;--kdelay:3.5s;--kfloat:-5px">Blood–brain barrier</span>
       <span class="kw md c-blue"  style="--kd:9s;--kdelay:4s;--kfloat:-3px">Spatial transcriptomics</span>
       <span class="kw md c-slate" style="--kd:7.5s;--kdelay:4.5s;--kfloat:-6px">Neural regeneration</span>
-      <span class="kw md c-teal"  style="--kd:6.5s;--kdelay:5s;--kfloat:-4px">Vascular biology</span>
+      <span class="kw md c-teal"  style="--kd:6.5s;--kdelay:5s;--kfloat:-4px">Immune evasion</span>
       <span class="kw md c-blue"  style="--kd:8s;--kdelay:5.5s;--kfloat:-5px">Neuroinflammation</span>
-      <span class="kw md c-slate" style="--kd:7s;--kdelay:6s;--kfloat:-3px">Gene-edited stem cells</span>
+      <span class="kw md c-slate" style="--kd:7s;--kdelay:6s;--kfloat:-3px">Graft–host crosstalk</span>
       <span class="kw sm c-teal"  style="--kd:8s;--kdelay:1.2s;--kfloat:-3px">iPSC-derived pericytes</span>
-      <span class="kw sm c-blue"  style="--kd:6.5s;--kdelay:2.2s;--kfloat:-4px">Pericyte biology</span>
-      <span class="kw sm c-slate" style="--kd:7.5s;--kdelay:3.2s;--kfloat:-3px">Alzheimer's disease</span>
+      <span class="kw sm c-blue"  style="--kd:6.5s;--kdelay:2.2s;--kfloat:-4px">Bioluminescent imaging</span>
+      <span class="kw sm c-slate" style="--kd:7.5s;--kdelay:3.2s;--kfloat:-3px">Laser Doppler flowmetry</span>
       <span class="kw sm c-teal"  style="--kd:9s;--kdelay:4.2s;--kfloat:-4px">Bulk RNA-seq</span>
-      <span class="kw sm c-blue"  style="--kd:6s;--kdelay:5.2s;--kfloat:-3px">Endothelial cell heterogeneity</span>
-      <span class="kw sm c-slate" style="--kd:8s;--kdelay:6.2s;--kfloat:-5px">Pathway enrichment analysis</span>
-      <span class="kw sm c-teal"  style="--kd:7s;--kdelay:0.8s;--kfloat:-3px">Aging &amp; vascular dysfunction</span>
+      <span class="kw sm c-blue"  style="--kd:6s;--kdelay:5.2s;--kfloat:-3px">CRISPRa screening</span>
+      <span class="kw sm c-slate" style="--kd:8s;--kdelay:6.2s;--kfloat:-5px">Deep learning gait analysis</span>
+      <span class="kw sm c-teal"  style="--kd:7s;--kdelay:0.8s;--kfloat:-3px">Multi-omics profiling</span>
       <span class="kw xs c-blue"  style="--kd:7s;--kdelay:1.8s;--kfloat:-2px">CADASIL</span>
-      <span class="kw xs c-slate" style="--kd:8.5s;--kdelay:2.8s;--kfloat:-3px">Cell communication analysis</span>
-      <span class="kw xs c-teal"  style="--kd:6.5s;--kdelay:3.8s;--kfloat:-2px">Computational neuroscience</span>
-      <span class="kw xs c-blue"  style="--kd:9s;--kdelay:4.8s;--kfloat:-3px">Preclinical mouse models</span>
+      <span class="kw xs c-slate" style="--kd:8.5s;--kdelay:2.8s;--kfloat:-3px">Rodent stroke models</span>
+      <span class="kw xs c-teal"  style="--kd:6.5s;--kdelay:3.8s;--kfloat:-2px">Confocal microscopy</span>
+      <span class="kw xs c-blue"  style="--kd:9s;--kdelay:4.8s;--kfloat:-3px">Cell transplantation</span>
       <span class="kw xs c-slate" style="--kd:7.5s;--kdelay:5.8s;--kfloat:-2px">Bioinformatics</span>
+      <span class="kw xs c-teal"  style="--kd:8s;--kdelay:6.8s;--kfloat:-2px">Hydrogel delivery</span>
+      <span class="kw xs c-blue"  style="--kd:7s;--kdelay:7.5s;--kfloat:-3px">HLA system editing</span>
     </div>
 
   </div><!-- /hero-body -->
@@ -543,7 +600,7 @@
 <!-- ════════════════════════════════════════════════════════
      RESEARCH
 ════════════════════════════════════════════════════════ -->
-<section id="research" class="section-wrap">
+<section id="research" class="section-wrap alt">
   <div class="section-inner">
     <div class="section-header fade-in">
       <div class="section-label">What We Do</div>
@@ -555,7 +612,7 @@
       <h3>Background</h3>
       <p>Every year 5 million people remain permanently disabled after a stroke due to the brain's limited ability to regenerate damaged tissue. The lack of an effective therapy that promotes long-term recovery after stroke represents a substantial clinical burden and unmet need for medical treatment outside the confines of conventional therapies. Recent advances in cell therapies have shown promising preclinical results in animal stroke models but have not been confirmed beyond doubt in a clinical setting. Major uncertainties remain — e.g., regarding the source of the transplanted cells, immune compatibility to the recipient, and cell survival and functional integration into the damaged neural circuitry.</p>
       <figure class="research-figure" style="margin-top:28px;">
-        <img src="Media_useful/Untitled-2.png" alt="Current challenges in cell therapy following a stroke" />
+        <img src="Media_useful/Figure_GroupLeader-02.png" alt="Current challenges in cell therapy following a stroke" style="mix-blend-mode:multiply;" />
         <figcaption><strong>Figure 1:</strong> Current challenges in cell therapy following a stroke. Primary cells are isolated from a donor or stroked patient and purified. Major limitations include scalability, in-depth characterization, and the very low initial survival rate of transplanted cells. Allogenic therapies are further limited by immunoincompatibility of graft and recipient.</figcaption>
       </figure>
     </div>
@@ -593,86 +650,6 @@
         <span class="technique-tag">qPCR</span>
         <span class="technique-tag">Molecular biology</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════
-     TEAM
-════════════════════════════════════════════════════════ -->
-<section id="team" class="section-wrap alt">
-  <div class="section-inner">
-    <div class="section-header fade-in">
-      <div class="section-label">The People</div>
-      <h2 class="section-title">The Research Team</h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <!-- PI card -->
-    <div class="team-pi fade-in">
-      <div class="team-pi-img">
-        <img src="Media_useful/20211026_170258.jpg" alt="Dr. Ruslan Rust" />
-      </div>
-      <div class="team-pi-info">
-        <div class="team-pi-role">Principal Investigator</div>
-        <div class="team-pi-name">Ruslan Rust</div>
-        <p class="team-pi-bio">Ruslan is an Assistant Professor of Neuroscience at the University of Southern California (USC). He previously served as principal investigator at the Institute for Regenerative Medicine at the University of Zurich. He completed his PhD at ETH Zurich in 2019, followed by postdoctoral training at the University of Zurich. His career has focused on developing regenerative therapies following experimental stroke in mice, combining preclinical research with molecular and genetic tools to advance cell therapies toward the clinical stage. In his free time, Ruslan enjoys outdoor activities, travel, sports, and playing guitar.</p>
-        <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="https://keck.usc.edu/faculty-search/ruslan-rust/" target="_blank" class="btn btn-primary" style="font-size:0.83rem;padding:8px 16px;">USC Faculty Profile</a>
-          <a href="#publications" class="btn btn-outline" style="font-size:0.83rem;padding:8px 16px;">Publications</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lab members grid -->
-    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:24px;">Lab Members</h3>
-    <div class="team-grid">
-      <div class="team-card fade-in">
-        <div class="team-card-img">
-          <img src="Media_useful/Portrait_R_Weber copy 2.jpg" alt="Rebecca Weber" />
-        </div>
-        <div class="team-card-body">
-          <div class="team-card-role">PhD Student</div>
-          <div class="team-card-name">Rebecca Weber</div>
-          <p class="team-card-bio">Doctoral student in Neuroscience contributing to the preclinical development and evaluation of an iPSC-based therapy following stroke in rodents. MSc in Neuroscience and BA in Biology from ETH Zurich.</p>
-        </div>
-      </div>
-
-      <div class="team-card fade-in">
-        <div class="team-card-img"><div class="team-card-avatar">BA</div></div>
-        <div class="team-card-body">
-          <div class="team-card-role">PhD Student</div>
-          <div class="team-card-name">Beatriz Achon Buil</div>
-          <p class="team-card-bio">Focuses on genetically modifying human Neural Progenitor Cells (NPCs) to improve their migration capacity across the brain barriers after stroke. Degrees in Biochemistry and Biomolecular Medicine from Universidad Autónoma de Madrid.</p>
-        </div>
-      </div>
-
-      <div class="team-card fade-in">
-        <div class="team-card-img"><div class="team-card-avatar">NR</div></div>
-        <div class="team-card-body">
-          <div class="team-card-role">Master's Student</div>
-          <div class="team-card-name">Nora H. Rentsch</div>
-          <p class="team-card-bio">Examines how hypoxic conditions determine the cellular fate and survival of neural progenitor cells in vitro and in vivo. Bachelor's in Biomedicine from the University of Zurich.</p>
-        </div>
-      </div>
-
-      <div class="team-card fade-in">
-        <div class="team-card-img"><div class="team-card-avatar">PP</div></div>
-        <div class="team-card-body">
-          <div class="team-card-role">Master's Student</div>
-          <div class="team-card-name">Patrick Perron</div>
-          <p class="team-card-bio">Biomedicine Master's Student at the University of Zurich working on multiple facets of a cell-based therapy for stroke patients.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Join us banner -->
-    <div class="team-join fade-in">
-      <div>
-        <h3>Join the Rust Lab</h3>
-        <p>We are always looking for motivated PhD and Master's students with a strong interest in translational neuroscience research. Please include a cover letter, CV, and contact information of 2 references.</p>
-      </div>
-      <a href="#contact" class="btn-white">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -1197,6 +1174,126 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════
+     TEAM
+════════════════════════════════════════════════════════ -->
+<section id="team" class="section-wrap alt">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-label">The People</div>
+      <h2 class="section-title">The Research Team</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- PI card -->
+    <div class="team-pi fade-in">
+      <div class="team-pi-img">
+        <img src="Media_useful/RR_cropped.jpg" alt="Dr. Ruslan Rust" />
+      </div>
+      <div class="team-pi-info">
+        <div class="team-location-badge usc">University of Southern California</div>
+        <div class="team-pi-role">Principal Investigator</div>
+        <div class="team-pi-name">Ruslan Rust</div>
+        <p class="team-pi-bio">Ruslan is an Assistant Professor of Neuroscience at the University of Southern California (USC). He previously served as principal investigator at the Institute for Regenerative Medicine at the University of Zurich. He completed his PhD at ETH Zurich in 2019, followed by postdoctoral training at the University of Zurich. His career has focused on developing regenerative therapies following experimental stroke in mice, combining preclinical research with molecular and genetic tools to advance cell therapies toward the clinical stage. In his free time, Ruslan enjoys outdoor activities, travel, sports, and playing guitar.</p>
+        <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://keck.usc.edu/faculty-search/ruslan-rust/" target="_blank" class="btn btn-primary" style="font-size:0.83rem;padding:8px 16px;">USC Faculty Profile</a>
+          <a href="#publications" class="btn btn-outline" style="font-size:0.83rem;padding:8px 16px;">Publications</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lab members grid -->
+    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:8px;margin-top:52px;">Lab Members</h3>
+    <div class="team-location-row fade-in">
+      <span class="team-location-dot usc"></span><span class="team-loc-label">University of Southern California (USC)</span>
+      <span class="team-location-dot uzh" style="margin-left:20px;"></span><span class="team-loc-label">University of Zurich (UZH)</span>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- USC members -->
+      <div class="team-card fade-in">
+        <div class="team-card-img"><div class="team-card-avatar">MZ</div></div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">Research Associate</div>
+          <div class="team-card-name">Mingzi Zhang</div>
+          <p class="team-card-bio">Dr. Zhang conducts in vitro and in vivo experiments to generate and preclinically evaluate gene-edited iPSC-NSC for stroke. Her work includes development and characterization of gene-edited iPSC-NSC lines, optimization of CRISPR-based modifications, and validation using in vitro assays. She also supports in vivo surgeries, cell transplantations, behavioral testing, and imaging studies to assess therapeutic potential.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img"><div class="team-card-avatar">GS</div></div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">Research Technician</div>
+          <div class="team-card-name">Gavin Spillard</div>
+          <p class="team-card-bio">Gavin carries out advanced in vitro and in vivo experiments, including iPSC-NSC engineering, CRISPRa screening assays, stroke surgeries, imaging coordination, and data analysis.</p>
+        </div>
+      </div>
+
+      <!-- UZH members -->
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/Portrait_R_Weber copy 2.jpg" alt="Rebecca Weber" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge uzh">UZH</div>
+          <div class="team-card-role">Postdoc</div>
+          <div class="team-card-name">Rebecca Weber</div>
+          <p class="team-card-bio">Postdoctoral researcher contributing to the preclinical development and evaluation of iPSC-based neural stem cell therapy following stroke in rodents. MSc in Neuroscience and BA in Biology from ETH Zurich.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/20211026_170258.jpg" alt="Beatriz Achón Buil" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge uzh">UZH</div>
+          <div class="team-card-role">PhD Student</div>
+          <div class="team-card-name">Beatriz Achón Buil</div>
+          <p class="team-card-bio">Focuses on genetically modifying human neural progenitor cells (NPCs) to improve their migration capacity across the blood-brain barrier after stroke. Degrees in Biochemistry and Biomolecular Medicine from Universidad Autónoma de Madrid.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/Nora_photo.png" alt="Nora H. Rentsch" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge uzh">UZH</div>
+          <div class="team-card-role">PhD Student</div>
+          <div class="team-card-name">Nora H. Rentsch</div>
+          <p class="team-card-bio">Examines how hypoxic conditions determine the cellular fate and survival of neural progenitor cells in vitro and in vivo. Bachelor's in Biomedicine from the University of Zurich.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img"><div class="team-card-avatar">PP</div></div>
+        <div class="team-card-body">
+          <div class="team-location-badge uzh">UZH</div>
+          <div class="team-card-role">Master's Student</div>
+          <div class="team-card-name">Patrick Perron</div>
+          <p class="team-card-bio">Biomedicine Master's Student at the University of Zurich working on multiple facets of a cell-based therapy for stroke patients.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Join us banner -->
+    <div class="team-join fade-in">
+      <div>
+        <h3>Join the Rust Lab</h3>
+        <p>We are always looking for motivated PhD and Master's students with a strong interest in translational neuroscience research. Please include a cover letter, CV, and contact information of 2 references.</p>
+      </div>
+      <a href="#contact" class="btn-white">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ════════════════════════════════════════════════════════
      CONTACT
 ════════════════════════════════════════════════════════ -->
 <section id="contact" class="section-wrap alt">
@@ -1216,7 +1313,7 @@
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="contact-label">Address</div>
-            <div class="contact-value">Department of Neuroscience<br/>University of Southern California<br/>Los Angeles, CA, USA</div>
+            <div class="contact-value">The Zilkha Neurogenetic Institute<br/>Department of Physiology and Neuroscience<br/>Keck School of Medicine of USC<br/>1501 San Pablo Street, Room 341<br/>Los Angeles, CA 90089-2821</div>
           </div>
         </div>
 
@@ -1224,7 +1321,7 @@
           <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div>
             <div class="contact-label">Email</div>
-            <div class="contact-value"><a href="mailto:ruslan.rust@usc.edu">ruslan.rust@usc.edu</a></div>
+            <div class="contact-value"><a href="mailto:rrust@usc.edu">rrust@usc.edu</a></div>
           </div>
         </div>
 
