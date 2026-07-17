@@ -449,26 +449,6 @@
     }
     .skip-nav:focus { top: 0; color: white; }
 
-    /* ─── Hero stats bar ─────────────────────────────────── */
-    .hero-stats {
-      margin-top: 36px; display: flex; flex-wrap: wrap;
-      justify-content: center; width: 100%; max-width: 680px;
-      background: white; border: 1px solid var(--border);
-      border-radius: 12px; box-shadow: var(--shadow-sm); overflow: hidden;
-    }
-    .hero-stat {
-      flex: 1; min-width: 130px; padding: 18px 14px;
-      text-align: center; border-right: 1px solid var(--border);
-    }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; color: var(--primary); }
-    .hero-stat-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; margin-top: 3px; }
-    @media (max-width: 768px) {
-      .hero-stats { max-width: 100%; }
-      .hero-stat { min-width: 110px; padding: 14px 10px; }
-      .hero-stat-num { font-size: 1.2rem; }
-    }
-
     /* ════════════════════════════════════════════════════════
        RESOURCES
     ════════════════════════════════════════════════════════ */
@@ -587,6 +567,38 @@
     .collab-institute { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
     .collab-location { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
     @media (max-width: 600px) { .collab-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ════════════════════════════════════════════════════════
+       IN THE NEWS
+    ════════════════════════════════════════════════════════ */
+    #news { background: var(--bg); }
+    .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .news-card {
+      display: flex; flex-direction: column; gap: 11px;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px 26px; box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .news-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .news-outlet { font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .news-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+    .news-tag {
+      align-self: flex-start; font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 3px 10px; border-radius: 20px; background: var(--primary-light);
+      color: var(--primary-dark); border: 1px solid rgba(42,143,143,0.2);
+    }
+    .news-headline { font-size: 1.02rem; font-weight: 600; color: var(--text); line-height: 1.45; }
+    .news-blurb { font-size: 0.86rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .news-link {
+      margin-top: auto; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; font-weight: 600; color: var(--primary);
+      padding: 7px 15px; border-radius: 7px; border: 1.5px solid var(--primary);
+      align-self: flex-start; transition: all 0.2s;
+    }
+    .news-link:hover { background: var(--primary); color: white; }
+    .news-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 760px) { .news-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -605,6 +617,7 @@
       <li><a href="#research"     data-section="research">Research</a></li>
       <li><a href="#resources"    data-section="resources">Resources</a></li>
       <li><a href="#publications" data-section="publications">Publications</a></li>
+      <li><a href="#news"          data-section="news">News</a></li>
       <li><a href="#team"          data-section="team">Team</a></li>
       <li><a href="#collaborators" data-section="collaborators">Collaborators</a></li>
       <li><a href="#contact"       data-section="contact">Contact</a></li>
@@ -658,30 +671,6 @@
         Our Research
       </a>
       <a href="#publications" class="btn btn-outline">Publications</a>
-    </div>
-
-    <!-- Stats bar -->
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">65+</div>
-        <div class="hero-stat-label">Publications</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">10+</div>
-        <div class="hero-stat-label">Years of Research</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">25</div>
-        <div class="hero-stat-label">h-index</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">40</div>
-        <div class="hero-stat-label">i10-index</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">15+</div>
-        <div class="hero-stat-label">Lab Members<br><span style="font-size:0.65rem;opacity:0.8;">(current &amp; previous)</span></div>
-      </div>
     </div>
 
     <!-- Let's connect -->
@@ -841,7 +830,7 @@
       <div class="section-label">Open Data</div>
       <h2 class="section-title">Resources</h2>
       <div class="section-divider"></div>
-      <p class="section-desc">Single-nucleus and spatial transcriptomics atlases from our published studies, freely available to the research community. Each atlas is fully interactive — explore cell types, gene expression, and molecular signatures directly in your browser.</p>
+      <p class="section-desc">Interactive atlases and data explorers from our studies, freely available to the research community. Browse single-cell and spatial transcriptomics, proteomics, and meta-science datasets — explore cell types, gene and protein expression, and molecular signatures directly in your browser.</p>
     </div>
 
     <div class="atlas-grid fade-in">
@@ -917,6 +906,81 @@
           <div class="atlas-preview-loading" id="atlas3-loading">
             <div class="atlas-spinner"></div>
             <p>Loading atlas…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlas 4: Neurovascular Signature Explorer — AD/HD/FTD (bioRxiv 2026) -->
+      <div class="atlas-card">
+        <div class="atlas-card-top">
+          <div class="atlas-card-info">
+            <div class="atlas-badge">Interactive Explorer · Single-cell &amp; Single-nucleus RNA-seq</div>
+            <h3 class="atlas-title">Neurovascular Signature Explorer</h3>
+            <p class="atlas-desc">A comparative single-cell and single-nucleus atlas of vascular and perivascular cells across Alzheimer's disease, Huntington's disease, and GRN-frontotemporal dementia. Explore gene expression, pericyte subtypes, and endothelial zonation, and trace the shared neurovascular signature that converges across all three diseases.</p>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.07.01.735865v1" target="_blank" rel="noopener noreferrer">Forster PM, Bracko O, Rust R — <em>bioRxiv</em> 2026</a></div>
+          </div>
+          <div class="atlas-card-side">
+            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas4','https://rustlab1.github.io/neurovascular-signature-explorer/',this)">
+              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://rustlab1.github.io/neurovascular-signature-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
+          </div>
+        </div>
+        <div class="atlas-preview-wrap" id="atlas4">
+          <div class="atlas-preview-loading" id="atlas4-loading">
+            <div class="atlas-spinner"></div>
+            <p>Loading explorer…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlas 5: BBB Proteome Explorer — temporal lobe epilepsy (bioRxiv 2026) -->
+      <div class="atlas-card">
+        <div class="atlas-card-top">
+          <div class="atlas-card-info">
+            <div class="atlas-badge">Interactive Explorer · Vascular &amp; Synaptic Proteomics</div>
+            <h3 class="atlas-title">BBB Proteome Explorer</h3>
+            <p class="atlas-desc">Interactive proteomic maps from drug-resistant temporal lobe epilepsy patients, spanning 1,541 microvessel and 7,450 postsynaptic proteins. Search gene-level changes, browse curated vascular–neuronal ligand–receptor pairs, and examine predicted drug candidates for blood–brain barrier disruption and synaptic remodeling.</p>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.11.731740v1" target="_blank" rel="noopener noreferrer">Spillard G, Zhang M, …, Rust R — <em>bioRxiv</em> 2026</a></div>
+          </div>
+          <div class="atlas-card-side">
+            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas5','https://rustlab1.github.io/bbb-proteome-explorer/',this)">
+              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://rustlab1.github.io/bbb-proteome-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
+          </div>
+        </div>
+        <div class="atlas-preview-wrap" id="atlas5">
+          <div class="atlas-preview-loading" id="atlas5-loading">
+            <div class="atlas-spinner"></div>
+            <p>Loading explorer…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlas 6: Preprint-to-Publication Tracker — meta-science (bioRxiv 2026) -->
+      <div class="atlas-card">
+        <div class="atlas-card-top">
+          <div class="atlas-card-info">
+            <div class="atlas-badge">Interactive Tool · Meta-science Dataset</div>
+            <h3 class="atlas-title">Preprint-to-Publication Tracker</h3>
+            <p class="atlas-desc">A meta-science platform tracking how scientific claims evolve from preprint to peer-reviewed publication across 72,644 bioRxiv pairs (2018–2025). Browse the full dataset, compare preprint and published abstracts side by side, and explore claim-change and hedging patterns extracted with large language models.</p>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.30.735556v1" target="_blank" rel="noopener noreferrer">Yin H, Rust R — <em>bioRxiv</em> 2026</a></div>
+          </div>
+          <div class="atlas-card-side">
+            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas6','https://rustlab1.github.io/PreprintPaperTracker/',this)">
+              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://rustlab1.github.io/PreprintPaperTracker/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
+          </div>
+        </div>
+        <div class="atlas-preview-wrap" id="atlas6">
+          <div class="atlas-preview-loading" id="atlas6-loading">
+            <div class="atlas-spinner"></div>
+            <p>Loading explorer…</p>
           </div>
         </div>
       </div>
@@ -1076,6 +1140,24 @@
     <div class="pub-year-section fade-in">
       <div class="pub-year-label">2026</div>
       <div class="pub-list-cards-grid">
+          <div class="pub-list-card">
+            <div class="pub-list-card-journal">bioRxiv (Preprint) · 2026</div>
+            <div class="pub-list-card-title">Shared and disease-specific human brain vascular signatures in Alzheimer's disease, frontotemporal dementia, and Huntington's disease</div>
+            <div class="pub-list-card-authors">Forster PM, Bracko O, <strong>Rust R</strong></div>
+            <a href="https://www.biorxiv.org/content/10.64898/2026.07.01.735865v1" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="pub-list-card">
+            <div class="pub-list-card-journal">bioRxiv (Preprint) · 2026</div>
+            <div class="pub-list-card-title">Tracking claim changes from preprint to publication across 72,644 biomedical studies using large language models</div>
+            <div class="pub-list-card-authors">Yin H, <strong>Rust R</strong></div>
+            <a href="https://www.biorxiv.org/content/10.64898/2026.06.30.735556v1" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="pub-list-card">
+            <div class="pub-list-card-journal">bioRxiv (Preprint) · 2026</div>
+            <div class="pub-list-card-title">Vascular and synaptic proteomes reveal blood-brain barrier disruption and postsynaptic remodeling in human temporal lobe epilepsy</div>
+            <div class="pub-list-card-authors">Spillard G, Zhang M, Atai NA, Bosworth A, Clementel VA, Russin JJ, …, <strong>Rust R</strong></div>
+            <a href="https://www.biorxiv.org/content/10.64898/2026.06.11.731740v1" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
           <div class="pub-list-card">
             <div class="pub-list-card-journal">Adv Sci (Weinh) · 2026</div>
             <div class="pub-list-card-title">"Time Is Brain" — for Cell Therapies</div>
@@ -1466,6 +1548,84 @@
       </div>
     </div>
     </div><!-- /pub-all-list -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     IN THE NEWS
+════════════════════════════════════════════════════════ -->
+<section id="news" class="section-wrap">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-label">Media Coverage</div>
+      <h2 class="section-title">In the News</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Our research and its implications, featured across science news outlets and the popular press.</p>
+    </div>
+
+    <div class="news-grid fade-in">
+
+      <!-- Nature News — preprint claim-tracking study -->
+      <article class="news-card">
+        <div class="news-card-top">
+          <span class="news-outlet">Nature</span>
+          <span class="news-date">10 Jul 2026</span>
+        </div>
+        <span class="news-tag">Preprints &amp; LLMs</span>
+        <h3 class="news-headline">Think preprints are unreliable? Analysis of 70,000 studies might change your mind</h3>
+        <p class="news-blurb">Nature News covers our large-scale study of 72,644 biomedical manuscripts, showing that central conclusions rarely change between the preprint and the peer-reviewed version.</p>
+        <a href="https://www.nature.com/articles/d41586-026-02167-3" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Keck USC — stem cell stroke therapy (Nat Commun) -->
+      <article class="news-card">
+        <div class="news-card-top">
+          <span class="news-outlet">Keck Medicine of USC</span>
+          <span class="news-date">16 Sep 2025</span>
+        </div>
+        <span class="news-tag">Stroke Cell Therapy</span>
+        <h3 class="news-headline">Stem cell transplant for stroke leads to brain cell growth and functional recovery in mice</h3>
+        <p class="news-blurb">USC's official coverage of our Nature Communications study, in which neural stem cells transplanted one week after stroke drove tissue repair and restored motor function.</p>
+        <a href="https://keck.usc.edu/news/stem-cell-transplant-for-stroke-leads-to-brain-cell-growth-and-functional-recovery-in-mice/" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- ScienceDaily -->
+      <article class="news-card">
+        <div class="news-card-top">
+          <span class="news-outlet">ScienceDaily</span>
+          <span class="news-date">16 Sep 2025</span>
+        </div>
+        <span class="news-tag">Stroke Cell Therapy</span>
+        <h3 class="news-headline">Scientists reverse stroke damage with stem cells</h3>
+        <p class="news-blurb">Coverage of our collaborative work showing that neural stem cell transplants regenerate brain tissue, repair blood vessels, and restore movement after stroke.</p>
+        <a href="https://www.sciencedaily.com/releases/2025/09/250916221821.htm" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Drug Target Review -->
+      <article class="news-card">
+        <div class="news-card-top">
+          <span class="news-outlet">Drug Target Review</span>
+          <span class="news-date">17 Sep 2025</span>
+        </div>
+        <span class="news-tag">Stroke Cell Therapy</span>
+        <h3 class="news-headline">New stem cell approach could repair stroke-damaged brains</h3>
+        <p class="news-blurb">A look at how our experimental stem cell therapy repaired brain damage in mice a week after ischemic stroke, potentially widening the treatment window for recovery.</p>
+        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Medical Xpress — 2019 Nogo-A / PNAS -->
+      <article class="news-card">
+        <div class="news-card-top">
+          <span class="news-outlet">Medical Xpress</span>
+          <span class="news-date">24 Jun 2019</span>
+        </div>
+        <span class="news-tag">Vascular Repair · Nogo-A</span>
+        <h3 class="news-headline">New therapy promotes vascular repair following stroke</h3>
+        <p class="news-blurb">Coverage of our PNAS study showing that blocking Nogo-A with antibodies promotes blood vessel repair and improves motor recovery after stroke in mice.</p>
+        <a href="https://medicalxpress.com/news/2019-06-therapy-vascular.html" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+    </div>
   </div>
 </section>
 
@@ -1979,7 +2139,7 @@
   }, { passive: true });
 
   // ── Active nav link via IntersectionObserver ─────────
-  const sections = ['home', 'research', 'publications', 'resources', 'team', 'collaborators', 'contact'];
+  const sections = ['home', 'research', 'resources', 'publications', 'news', 'team', 'collaborators', 'contact'];
   const navLinks = {};
   sections.forEach(id => {
     const el = document.querySelector(`[data-section="${id}"]`);
@@ -2036,7 +2196,7 @@
     const isOpen = !wrap.classList.contains('open');
 
     // Close all other open previews first
-    ['atlas1','atlas2','atlas3'].forEach(otherId => {
+    ['atlas1','atlas2','atlas3','atlas4','atlas5','atlas6'].forEach(otherId => {
       if (otherId === id) return;
       const otherWrap = document.getElementById(otherId);
       if (otherWrap && otherWrap.classList.contains('open')) {
