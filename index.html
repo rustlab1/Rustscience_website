@@ -454,6 +454,9 @@
     ════════════════════════════════════════════════════════ */
     #resources { background: var(--bg); }
     .atlas-grid { display: flex; flex-direction: column; gap: 20px; }
+    .atlas-subhead { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-top:20px; padding-bottom:9px; border-bottom:1px solid var(--border); display:flex; align-items:baseline; flex-wrap:wrap; gap:10px; }
+    .atlas-subhead:first-child { margin-top:0; }
+    .atlas-subhead span { font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; color:var(--text-muted); }
     .atlas-card {
       background: var(--bg-white); border: 1px solid var(--border);
       border-radius: 14px; padding: 26px 28px; box-shadow: var(--shadow-sm);
@@ -580,6 +583,13 @@
       transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     }
     .news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .news-card-imglink {
+      display: block; overflow: hidden;
+      margin: -24px -26px 0; border-radius: 13px 13px 0 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .news-card-img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.45s ease; }
+    .news-card-imglink:hover .news-card-img { transform: scale(1.05); }
     .news-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .news-outlet { font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; }
     .news-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
@@ -835,6 +845,60 @@
 
     <div class="atlas-grid fade-in">
 
+      <div class="atlas-subhead">Neurovascular Signatures<span>Across neurodegeneration &amp; epilepsy</span></div>
+
+      <!-- Atlas 4: Neurovascular Signature Explorer — AD/HD/FTD (bioRxiv 2026) -->
+      <div class="atlas-card">
+        <div class="atlas-card-top">
+          <div class="atlas-card-info">
+            <div class="atlas-badge">Interactive Explorer · Single-cell &amp; Single-nucleus RNA-seq</div>
+            <h3 class="atlas-title">Neurovascular Signature Explorer <span style="font-size:0.85em;opacity:0.75;">(Alzheimer's · Huntington's · FTD)</span></h3>
+            <p class="atlas-desc">A comparative single-cell and single-nucleus atlas of vascular and perivascular cells across Alzheimer's disease, Huntington's disease, and GRN-frontotemporal dementia. Explore gene expression, pericyte subtypes, and endothelial zonation, and trace the shared neurovascular signature that converges across all three diseases.</p>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.07.01.735865v1" target="_blank" rel="noopener noreferrer">Forster PM, Bracko O, Rust R — <em>bioRxiv</em> 2026</a></div>
+          </div>
+          <div class="atlas-card-side">
+            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas4','https://rustlab1.github.io/neurovascular-signature-explorer/',this)">
+              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://rustlab1.github.io/neurovascular-signature-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
+          </div>
+        </div>
+        <div class="atlas-preview-wrap" id="atlas4">
+          <div class="atlas-preview-loading" id="atlas4-loading">
+            <div class="atlas-spinner"></div>
+            <p>Loading explorer…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Atlas 5: BBB Proteome Explorer — temporal lobe epilepsy (bioRxiv 2026) -->
+      <div class="atlas-card">
+        <div class="atlas-card-top">
+          <div class="atlas-card-info">
+            <div class="atlas-badge">Interactive Explorer · Vascular &amp; Synaptic Proteomics</div>
+            <h3 class="atlas-title">Epilepsy BBB Proteome Explorer</h3>
+            <p class="atlas-desc">Interactive proteomic maps from drug-resistant temporal lobe epilepsy patients, spanning 1,541 microvessel and 7,450 postsynaptic proteins. Search gene-level changes, browse curated vascular–neuronal ligand–receptor pairs, and examine predicted drug candidates for blood–brain barrier disruption and synaptic remodeling.</p>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.11.731740v1" target="_blank" rel="noopener noreferrer">Spillard G, Zhang M, …, Rust R — <em>bioRxiv</em> 2026</a></div>
+          </div>
+          <div class="atlas-card-side">
+            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas5','https://rustlab1.github.io/bbb-proteome-explorer/',this)">
+              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Preview
+            </button>
+            <a href="https://rustlab1.github.io/bbb-proteome-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
+          </div>
+        </div>
+        <div class="atlas-preview-wrap" id="atlas5">
+          <div class="atlas-preview-loading" id="atlas5-loading">
+            <div class="atlas-spinner"></div>
+            <p>Loading explorer…</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="atlas-subhead">Cell Therapy for Stroke</div>
+
       <!-- Atlas 1: Stroke Mouse Brain Atlas (J Neuroinflammation 2025) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
@@ -910,55 +974,7 @@
         </div>
       </div>
 
-      <!-- Atlas 4: Neurovascular Signature Explorer — AD/HD/FTD (bioRxiv 2026) -->
-      <div class="atlas-card">
-        <div class="atlas-card-top">
-          <div class="atlas-card-info">
-            <div class="atlas-badge">Interactive Explorer · Single-cell &amp; Single-nucleus RNA-seq</div>
-            <h3 class="atlas-title">Neurovascular Signature Explorer</h3>
-            <p class="atlas-desc">A comparative single-cell and single-nucleus atlas of vascular and perivascular cells across Alzheimer's disease, Huntington's disease, and GRN-frontotemporal dementia. Explore gene expression, pericyte subtypes, and endothelial zonation, and trace the shared neurovascular signature that converges across all three diseases.</p>
-            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.07.01.735865v1" target="_blank" rel="noopener noreferrer">Forster PM, Bracko O, Rust R — <em>bioRxiv</em> 2026</a></div>
-          </div>
-          <div class="atlas-card-side">
-            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas4','https://rustlab1.github.io/neurovascular-signature-explorer/',this)">
-              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Preview
-            </button>
-            <a href="https://rustlab1.github.io/neurovascular-signature-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
-          </div>
-        </div>
-        <div class="atlas-preview-wrap" id="atlas4">
-          <div class="atlas-preview-loading" id="atlas4-loading">
-            <div class="atlas-spinner"></div>
-            <p>Loading explorer…</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Atlas 5: BBB Proteome Explorer — temporal lobe epilepsy (bioRxiv 2026) -->
-      <div class="atlas-card">
-        <div class="atlas-card-top">
-          <div class="atlas-card-info">
-            <div class="atlas-badge">Interactive Explorer · Vascular &amp; Synaptic Proteomics</div>
-            <h3 class="atlas-title">BBB Proteome Explorer</h3>
-            <p class="atlas-desc">Interactive proteomic maps from drug-resistant temporal lobe epilepsy patients, spanning 1,541 microvessel and 7,450 postsynaptic proteins. Search gene-level changes, browse curated vascular–neuronal ligand–receptor pairs, and examine predicted drug candidates for blood–brain barrier disruption and synaptic remodeling.</p>
-            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.11.731740v1" target="_blank" rel="noopener noreferrer">Spillard G, Zhang M, …, Rust R — <em>bioRxiv</em> 2026</a></div>
-          </div>
-          <div class="atlas-card-side">
-            <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas5','https://rustlab1.github.io/bbb-proteome-explorer/',this)">
-              <svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Preview
-            </button>
-            <a href="https://rustlab1.github.io/bbb-proteome-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-btn">Open Full Screen →</a>
-          </div>
-        </div>
-        <div class="atlas-preview-wrap" id="atlas5">
-          <div class="atlas-preview-loading" id="atlas5-loading">
-            <div class="atlas-spinner"></div>
-            <p>Loading explorer…</p>
-          </div>
-        </div>
-      </div>
+      <div class="atlas-subhead">Meta-Science<span>Open science &amp; publishing</span></div>
 
       <!-- Atlas 6: Preprint-to-Publication Tracker — meta-science (bioRxiv 2026) -->
       <div class="atlas-card">
@@ -1055,6 +1071,20 @@
           </div>
         </div>
         <div class="pub-card">
+          <img class="pub-card-img" loading="lazy" src="Media_useful/publications/pub7-delayed-transplant.jpg" alt="Figure from Delayed Transplantation of Neural Stem Cells Improves Initial Graft Survival after Stroke" />
+          <div class="pub-card-body">
+            <div class="pub-card-journal">Advanced Science · 2025</div>
+            <div class="pub-card-title">Delayed Transplantation of Neural Stem Cells Improves Initial Graft Survival after Stroke</div>
+            <div class="pub-card-authors">Weber RZ, Rentsch NH, Achón Buil B, …, <strong>Rust R</strong></div>
+            <div class="pub-card-tags"><span class="pub-card-tag">Cell Therapy</span><span class="pub-card-tag">Graft Survival</span><span class="pub-card-tag">Stroke Recovery</span></div>
+            <div class="pub-card-footer">
+              <a href="https://doi.org/10.1002/advs.202504154" target="_blank" class="pub-card-link">
+                Read Paper <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-card">
           <img class="pub-card-img" loading="lazy" src="Media_useful/publications/pub2-molecular-brain-atlas.jpg" alt="Figure from A molecular brain atlas reveals cellular shifts during the repair phase of stroke" />
           <div class="pub-card-body">
             <div class="pub-card-journal">Journal of Neuroinflammation · 2025</div>
@@ -1071,12 +1101,12 @@
         <div class="pub-card">
           <img class="pub-card-img" loading="lazy" src="Media_useful/publications/pub3-multiomic-profiling.jpg" alt="Figure from Multiomic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology" />
           <div class="pub-card-body">
-            <div class="pub-card-journal">bioRxiv (Preprint) · 2025</div>
+            <div class="pub-card-journal">Cell Reports · 2026</div>
             <div class="pub-card-title">Multiomic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology</div>
             <div class="pub-card-authors">Huang Y, Clementel V, Zhang M, …, <strong>Rust R</strong></div>
             <div class="pub-card-tags"><span class="pub-card-tag">Multi-omics</span><span class="pub-card-tag">CADASIL</span><span class="pub-card-tag">Vascular Biology</span></div>
             <div class="pub-card-footer">
-              <a href="https://doi.org/10.1101/2025.09.10.675140" target="_blank" class="pub-card-link">
+              <a href="https://doi.org/10.1016/j.celrep.2026.117285" target="_blank" class="pub-card-link">
                 Read Paper <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
             </div>
@@ -1567,6 +1597,7 @@
 
       <!-- Nature News — preprint claim-tracking study -->
       <article class="news-card">
+        <a href="https://www.nature.com/articles/d41586-026-02167-3" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/nature-preprints.jpg" alt="Nature News preview: analysis of 70,000 preprints" /></a>
         <div class="news-card-top">
           <span class="news-outlet">Nature</span>
           <span class="news-date">10 Jul 2026</span>
@@ -1579,6 +1610,7 @@
 
       <!-- Keck USC — stem cell stroke therapy (Nat Commun) -->
       <article class="news-card">
+        <a href="https://keck.usc.edu/news/stem-cell-transplant-for-stroke-leads-to-brain-cell-growth-and-functional-recovery-in-mice/" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/keck-stemcell.jpg" alt="Keck Medicine of USC preview: stem cell transplant for stroke" /></a>
         <div class="news-card-top">
           <span class="news-outlet">Keck Medicine of USC</span>
           <span class="news-date">16 Sep 2025</span>
@@ -1591,6 +1623,7 @@
 
       <!-- ScienceDaily -->
       <article class="news-card">
+        <a href="https://www.sciencedaily.com/releases/2025/09/250916221821.htm" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/sciencedaily-stroke.jpg" alt="ScienceDaily preview: scientists reverse stroke damage with stem cells" /></a>
         <div class="news-card-top">
           <span class="news-outlet">ScienceDaily</span>
           <span class="news-date">16 Sep 2025</span>
@@ -1603,6 +1636,7 @@
 
       <!-- Drug Target Review -->
       <article class="news-card">
+        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/drugtargetreview-stemcell.jpg" alt="Drug Target Review preview: new stem cell approach to repair stroke-damaged brains" /></a>
         <div class="news-card-top">
           <span class="news-outlet">Drug Target Review</span>
           <span class="news-date">17 Sep 2025</span>
@@ -1615,6 +1649,7 @@
 
       <!-- Medical Xpress — 2019 Nogo-A / PNAS -->
       <article class="news-card">
+        <a href="https://medicalxpress.com/news/2019-06-therapy-vascular.html" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/medicalxpress-vascular.jpg" alt="Medical Xpress preview: new therapy promotes vascular repair after stroke" /></a>
         <div class="news-card-top">
           <span class="news-outlet">Medical Xpress</span>
           <span class="news-date">24 Jun 2019</span>
@@ -1676,6 +1711,18 @@
           <div class="team-card-role">Research Associate</div>
           <div class="team-card-name">Mingzi Zhang</div>
           <p class="team-card-bio">Works on cell-based therapy for stroke and Alzheimer's disease, investigating how the microbiome influences neuroinflammation in the brain.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/photos_students/Woosung.jpg" alt="Woosung Ahn" loading="lazy" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">Research Associate</div>
+          <div class="team-card-name">Woosung Ahn</div>
+          <p class="team-card-bio">Works on gene-edited cell therapy for stroke and Alzheimer's disease.</p>
         </div>
       </div>
 
@@ -1828,6 +1875,12 @@
       <p class="section-sub">We are grateful to work with outstanding scientists across the globe.</p>
     </div>
     <div class="collab-grid fade-in">
+
+      <div class="collab-card">
+        <div class="collab-name">Oliver Bracko</div>
+        <div class="collab-institute">Epstein Family Alzheimer's Therapeutic Research Institute, USC</div>
+        <div class="collab-location">San Diego, USA</div>
+      </div>
 
       <div class="collab-card">
         <div class="collab-name">Marcelo Coba</div>
