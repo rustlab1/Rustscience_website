@@ -463,7 +463,10 @@
       transition: box-shadow 0.3s, border-color 0.3s;
     }
     .atlas-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary); }
-    .atlas-card-top { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: start; }
+    .atlas-card-top { display: grid; grid-template-columns: 210px 1fr auto; gap: 26px; align-items: start; }
+    .atlas-thumb { display: block; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
+    .atlas-thumb img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; transition: transform 0.35s ease; }
+    .atlas-thumb:hover img { transform: scale(1.05); }
     .atlas-card-info { display: flex; flex-direction: column; gap: 10px; }
     .atlas-card-side { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; min-width: 180px; }
     .atlas-card-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -525,6 +528,7 @@
     }
     @media (max-width: 900px) {
       .atlas-card-top { grid-template-columns: 1fr; }
+      .atlas-thumb { max-width: 320px; }
       .atlas-card-side { align-items: flex-start; min-width: unset; }
       .atlas-preview-wrap iframe { height: 420px; }
     }
@@ -543,7 +547,7 @@
       mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
     }
     .funding-carousel-track {
-      display: flex; align-items: center; gap: 96px;
+      display: flex; align-items: center; gap: 28px;
       width: max-content;
       animation: funding-scroll 36s linear infinite;
     }
@@ -554,12 +558,11 @@
     }
     .funder-logo-item { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .funder-logo-item img {
-      height: 68px; width: auto; max-width: 190px;
+      height: 110px; width: auto; max-width: none;
       object-fit: contain; display: block;
       opacity: 0.82; transition: opacity 0.22s, transform 0.22s;
       mix-blend-mode: multiply; /* removes white padding from logo images */
     }
-    .funder-logo-item.lg img { height: 136px; max-width: 280px; }
     .funder-logo-item:hover img { opacity: 1; transform: scale(1.08); }
 
     /* Collaborators */
@@ -609,6 +612,31 @@
     .news-link:hover { background: var(--primary); color: white; }
     .news-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
     @media (max-width: 760px) { .news-grid { grid-template-columns: 1fr; } }
+    .news-subhead { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--text); margin:40px 0 18px; padding-bottom:9px; border-bottom:1px solid var(--border); }
+    .news-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .news-card-img.square { height: auto; aspect-ratio: 1 / 1; }
+    .news-more { margin-top: 18px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .lab-news-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .lab-news-list li { display: flex; gap: 16px; align-items: baseline; padding: 12px 18px; background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px; font-size: 0.9rem; line-height: 1.5; }
+    .lab-news-date { flex: 0 0 74px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); }
+    .lab-news-source { color: var(--text-muted); font-size: 0.8rem; }
+    .lab-news-list a { color: inherit; }
+    .lab-news-list a:hover { color: var(--primary); text-decoration: underline; }
+    .lab-news-more { margin-top: 12px; }
+    .lab-news-more summary { cursor: pointer; display: inline-block; padding: 8px 16px; border: 1.5px solid var(--primary); border-radius: 7px; color: var(--primary); font-size: 0.82rem; font-weight: 600; list-style: none; }
+    .lab-news-more summary::-webkit-details-marker { display: none; }
+    .lab-news-more summary:hover { background: var(--primary); color: white; }
+    .lab-news-more[open] summary { margin-bottom: 12px; }
+    .lab-life-grid { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; margin-top: 18px; aspect-ratio: 2 / 1; }
+    .lab-life-grid img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 10px; box-shadow: var(--shadow-sm); }
+    .lab-life-grid img:first-child { grid-row: 1 / span 2; }
+    @media (max-width: 760px) { .lab-life-grid { grid-template-columns: 1fr; grid-template-rows: auto; aspect-ratio: auto; } .lab-life-grid img { height: auto; } .lab-life-grid img:first-child { grid-row: auto; } }
+    .hiring-callout { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 32px; padding: 22px 26px; background: var(--primary-light); border: 1px solid rgba(42,143,143,0.25); border-left: 4px solid var(--primary); border-radius: 12px; }
+    .hiring-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary-dark); margin-bottom: 4px; }
+    .hiring-callout p { font-size: 0.95rem; color: var(--text); margin: 0; max-width: 640px; }
+    .hiring-chip { display: inline-block; margin: 0 auto 16px; padding: 6px 15px; border-radius: 999px; background: var(--primary-light); color: var(--primary-dark); font-size: 0.82rem; font-weight: 600; border: 1px solid rgba(42,143,143,0.25); transition: all 0.2s; }
+    .hiring-chip:hover { background: var(--primary); color: white; }
+    @media (max-width: 760px) { .news-grid.cols-3 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -666,6 +694,8 @@
     <div class="hero-lab-logo">
       <img src="Media_useful/logo.png" alt="RUSTLAB logo" loading="lazy" />
     </div>
+
+    <a href="#contact" class="hiring-chip">We're always looking for motivated people · Get in touch →</a>
 
     <h1 class="hero-title">
       Cell Therapy for <span>Brain Regeneration</span>
@@ -850,6 +880,7 @@
       <!-- Atlas 4: Neurovascular Signature Explorer — AD/HD/FTD (bioRxiv 2026) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab1.github.io/neurovascular-signature-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-neurovascular.jpg" alt="UMAP of brain vascular and perivascular cell types" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Explorer · Single-cell &amp; Single-nucleus RNA-seq</div>
             <h3 class="atlas-title">Neurovascular Signature Explorer <span style="font-size:0.85em;opacity:0.75;">(Alzheimer's · Huntington's · FTD)</span></h3>
@@ -875,6 +906,7 @@
       <!-- Atlas 5: BBB Proteome Explorer — temporal lobe epilepsy (bioRxiv 2026) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab1.github.io/bbb-proteome-explorer/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-bbb-proteome.jpg" alt="Workflow from epilepsy surgery tissue to microvessel and synaptic proteomes" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Explorer · Vascular &amp; Synaptic Proteomics</div>
             <h3 class="atlas-title">Epilepsy BBB Proteome Explorer</h3>
@@ -902,6 +934,7 @@
       <!-- Atlas 1: Stroke Mouse Brain Atlas (J Neuroinflammation 2025) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab.shinyapps.io/Stroke-Atlas/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-stroke-atlas.jpg" alt="UMAP of cell types in the stroke-injured mouse brain" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Atlas · Single-nucleus &amp; Spatial Transcriptomics</div>
             <h3 class="atlas-title">Stroke Mouse Brain Atlas</h3>
@@ -927,6 +960,7 @@
       <!-- Atlas 2: Cell Therapy Stroke Atlas — mouse graft (Nature Comm 2025) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab.shinyapps.io/Cell-Therapy-Stroke-Atlas/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-graft-mouse.jpg" alt="UMAP of cell types in the mouse graft atlas" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Atlas · Single-nucleus Transcriptomics</div>
             <h3 class="atlas-title">Cell Therapy Stroke Atlas <span style="font-size:0.85em;opacity:0.75;">(Mouse Graft)</span></h3>
@@ -952,6 +986,7 @@
       <!-- Atlas 3: Cell Graft Stroke Atlas — human graft (Nature Comm 2025) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab.shinyapps.io/cell-graft-stroke/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-graft-human.jpg" alt="UMAP of human graft cell types" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Atlas · Single-nucleus Transcriptomics</div>
             <h3 class="atlas-title">Cell Therapy Stroke Atlas <span style="font-size:0.85em;opacity:0.75;">(Human Graft)</span></h3>
@@ -979,11 +1014,12 @@
       <!-- Atlas 6: Preprint-to-Publication Tracker — meta-science (bioRxiv 2026) -->
       <div class="atlas-card">
         <div class="atlas-card-top">
+          <a href="https://rustlab1.github.io/PreprintPaperTracker/" target="_blank" rel="noopener noreferrer" class="atlas-thumb"><img src="Media_useful/resources/preview-preprint-tracker.jpg" alt="Chart of how primary claims change from preprint to publication" loading="lazy" /></a>
           <div class="atlas-card-info">
             <div class="atlas-badge">Interactive Tool · Meta-science Dataset</div>
             <h3 class="atlas-title">Preprint-to-Publication Tracker</h3>
             <p class="atlas-desc">A meta-science platform tracking how scientific claims evolve from preprint to peer-reviewed publication across 72,644 bioRxiv pairs (2018–2025). Browse the full dataset, compare preprint and published abstracts side by side, and explore claim-change and hedging patterns extracted with large language models.</p>
-            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.30.735556v1" target="_blank" rel="noopener noreferrer">Yin H, Rust R — <em>bioRxiv</em> 2026</a></div>
+            <div class="atlas-source">Source: <a href="https://www.biorxiv.org/content/10.64898/2026.06.30.735556v1" target="_blank" rel="noopener noreferrer">Yin H, Ahn W, Forster PM, Rust R — <em>bioRxiv</em> 2026</a></div>
           </div>
           <div class="atlas-card-side">
             <button class="atlas-btn-outline" onclick="toggleAtlasPreview('atlas6','https://rustlab1.github.io/PreprintPaperTracker/',this)">
@@ -1099,10 +1135,10 @@
           </div>
         </div>
         <div class="pub-card">
-          <img class="pub-card-img" loading="lazy" src="Media_useful/publications/pub3-multiomic-profiling.jpg" alt="Figure from Multiomic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology" />
+          <img class="pub-card-img" loading="lazy" src="Media_useful/publications/pub3-multiomic-profiling.jpg" alt="Figure from Multi-omic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology in cell-specific Notch3 mutant mice" />
           <div class="pub-card-body">
             <div class="pub-card-journal">Cell Reports · 2026</div>
-            <div class="pub-card-title">Multiomic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology</div>
+            <div class="pub-card-title">Multi-omic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology in cell-specific Notch3 mutant mice</div>
             <div class="pub-card-authors">Huang Y, Clementel V, Zhang M, …, <strong>Rust R</strong></div>
             <div class="pub-card-tags"><span class="pub-card-tag">Multi-omics</span><span class="pub-card-tag">CADASIL</span><span class="pub-card-tag">Vascular Biology</span></div>
             <div class="pub-card-footer">
@@ -1179,7 +1215,7 @@
           <div class="pub-list-card">
             <div class="pub-list-card-journal">bioRxiv (Preprint) · 2026</div>
             <div class="pub-list-card-title">Tracking claim changes from preprint to publication across 72,644 biomedical studies using large language models</div>
-            <div class="pub-list-card-authors">Yin H, <strong>Rust R</strong></div>
+            <div class="pub-list-card-authors">Yin H, Ahn W, Forster PM, <strong>Rust R</strong></div>
             <a href="https://www.biorxiv.org/content/10.64898/2026.06.30.735556v1" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
           <div class="pub-list-card">
@@ -1187,6 +1223,12 @@
             <div class="pub-list-card-title">Vascular and synaptic proteomes reveal blood-brain barrier disruption and postsynaptic remodeling in human temporal lobe epilepsy</div>
             <div class="pub-list-card-authors">Spillard G, Zhang M, Atai NA, Bosworth A, Clementel VA, Russin JJ, …, <strong>Rust R</strong></div>
             <a href="https://www.biorxiv.org/content/10.64898/2026.06.11.731740v1" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="pub-list-card">
+            <div class="pub-list-card-journal">Cell Rep · 2026</div>
+            <div class="pub-list-card-title">Multi-omic profiling reveals pericyte and smooth muscle cell contributions to CADASIL pathology in cell-specific Notch3 mutant mice</div>
+            <div class="pub-list-card-authors">Huang Y, Clementel V, Zhang M, …, <strong>Rust R</strong></div>
+            <a href="https://doi.org/10.1016/j.celrep.2026.117285" target="_blank" class="pub-list-card-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
           <div class="pub-list-card">
             <div class="pub-list-card-journal">Adv Sci (Weinh) · 2026</div>
@@ -1593,7 +1635,21 @@
       <p class="section-desc">Our research and its implications, featured across science news outlets and the popular press.</p>
     </div>
 
+    <h3 class="news-subhead fade-in">Press Coverage</h3>
     <div class="news-grid fade-in">
+
+      <!-- Nature Briefing: 13 Jul 2026 -->
+      <article class="news-card">
+        <a href="https://www.nature.com/articles/d41586-026-02206-z" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/nature-briefing.jpg" alt="Nature Briefing preview: Daily briefing: The rise of evidence-based medicine" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">Nature Briefing</span>
+          <span class="news-date">13 Jul 2026</span>
+        </div>
+        <span class="news-tag">Preprints &amp; LLMs</span>
+        <h3 class="news-headline">Daily briefing: The rise of evidence-based medicine</h3>
+        <p class="news-blurb">The Nature Briefing featured our preprint-to-publication study under "Preprints unchanged by peer review", noting that most conclusions change little between the preprint and the published version.</p>
+        <a href="https://www.nature.com/articles/d41586-026-02206-z" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
 
       <!-- Nature News — preprint claim-tracking study -->
       <article class="news-card">
@@ -1606,6 +1662,32 @@
         <h3 class="news-headline">Think preprints are unreliable? Analysis of 70,000 studies might change your mind</h3>
         <p class="news-blurb">Nature News covers our large-scale study of 72,644 biomedical manuscripts, showing that central conclusions rarely change between the preprint and the peer-reviewed version.</p>
         <a href="https://www.nature.com/articles/d41586-026-02167-3" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- ScienceAlert: 22 Sep 2025 -->
+      <article class="news-card">
+        <a href="https://www.sciencealert.com/stem-cells-repair-brain-damage-caused-by-stroke-in-mice" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/sciencealert.jpg" alt="ScienceAlert preview: Stem Cells Repair Brain Damage Caused by Stroke in Mice" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">ScienceAlert</span>
+          <span class="news-date">22 Sep 2025</span>
+        </div>
+        <span class="news-tag">Stroke Cell Therapy</span>
+        <h3 class="news-headline">Stem Cells Repair Brain Damage Caused by Stroke in Mice</h3>
+        <p class="news-blurb">Coverage of our two stroke studies with the University of Zurich, linking both the Nature Communications and the Advanced Science papers on neural stem cell grafts.</p>
+        <a href="https://www.sciencealert.com/stem-cells-repair-brain-damage-caused-by-stroke-in-mice" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Drug Target Review -->
+      <article class="news-card">
+        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/drugtargetreview-stemcell.jpg" alt="Drug Target Review preview: new stem cell approach to repair stroke-damaged brains" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">Drug Target Review</span>
+          <span class="news-date">17 Sep 2025</span>
+        </div>
+        <span class="news-tag">Stroke Cell Therapy</span>
+        <h3 class="news-headline">New stem cell approach could repair stroke-damaged brains</h3>
+        <p class="news-blurb">A look at how our experimental stem cell therapy repaired brain damage in mice a week after ischemic stroke, potentially widening the treatment window for recovery.</p>
+        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
       </article>
 
       <!-- Keck USC — stem cell stroke therapy (Nat Commun) -->
@@ -1634,17 +1716,17 @@
         <a href="https://www.sciencedaily.com/releases/2025/09/250916221821.htm" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
       </article>
 
-      <!-- Drug Target Review -->
+      <!-- UZH News: 16 Sep 2025 -->
       <article class="news-card">
-        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/drugtargetreview-stemcell.jpg" alt="Drug Target Review preview: new stem cell approach to repair stroke-damaged brains" /></a>
+        <a href="https://www.news.uzh.ch/en/articles/media/2025/stroke.html" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/publications/pub1-neural-xenografts.jpg" alt="UZH News preview: Stem Cells Repair Mouse Brains Post-Stroke" /></a>
         <div class="news-card-top">
-          <span class="news-outlet">Drug Target Review</span>
-          <span class="news-date">17 Sep 2025</span>
+          <span class="news-outlet">UZH News</span>
+          <span class="news-date">16 Sep 2025</span>
         </div>
         <span class="news-tag">Stroke Cell Therapy</span>
-        <h3 class="news-headline">New stem cell approach could repair stroke-damaged brains</h3>
-        <p class="news-blurb">A look at how our experimental stem cell therapy repaired brain damage in mice a week after ischemic stroke, potentially widening the treatment window for recovery.</p>
-        <a href="https://www.drugtargetreview.com/new-stem-cell-approach-could-repair-stroke-damaged-brains/677869.article" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <h3 class="news-headline">Stem Cells Repair Mouse Brains Post-Stroke</h3>
+        <p class="news-blurb">The University of Zurich's release on two stroke studies with our group, showing that neural stem cell grafts support brain repair after stroke in mice.</p>
+        <a href="https://www.news.uzh.ch/en/articles/media/2025/stroke.html" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
       </article>
 
       <!-- Medical Xpress — 2019 Nogo-A / PNAS -->
@@ -1661,6 +1743,110 @@
       </article>
 
     </div>
+    <p class="news-more fade-in"><strong>More coverage:</strong> <a href="https://www.insideprecisionmedicine.com/topics/translational-research/stem-cell-transplant-in-mice-makes-stroke-recovery-possible/" target="_blank" rel="noopener noreferrer">Inside Precision Medicine</a> (Sep 2025), <a href="https://medicalxpress.com/news/2025-09-stem-cell-transplant-brain-growth.html" target="_blank" rel="noopener noreferrer">Medical Xpress</a> (Sep 2025), <a href="https://www.news.uzh.ch/en/articles/2019/Stroke.html" target="_blank" rel="noopener noreferrer">UZH News</a> (on our 2019 Nogo-A study), <a href="https://www.itmedia.co.jp/news/articles/2607/15/news039.html" target="_blank" rel="noopener noreferrer">ITmedia NEWS</a> (Japan, Jul 2026), <a href="https://finance.sina.com.cn/tech/roll/2026-07-14/doc-inihtmen8573375.shtml" target="_blank" rel="noopener noreferrer">China Science Daily</a> (Jul 2026), <a href="https://www.cadena3.com/noticia/ciencia/celulas-madre-logran-reparar-danos-por-accidente-cerebrovascular-en-ratones_596456" target="_blank" rel="noopener noreferrer">Cadena 3</a> (Argentina, Sep 2026).</p>
+
+    <h3 class="news-subhead fade-in">Expert Commentary</h3>
+    <div class="news-grid fade-in">
+
+      <!-- The Scientist: 16 Sep 2026 -->
+      <article class="news-card">
+        <a href="https://www.the-scientist.com/human-derived-brain-organoids-create-functional-networks-in-mice-74996" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/the-scientist.jpg" alt="The Scientist preview: Human-Derived Brain Organoids Create Functional Networks in Mice" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">The Scientist</span>
+          <span class="news-date">16 Sep 2026</span>
+        </div>
+        <span class="news-tag">Expert Commentary</span>
+        <h3 class="news-headline">Human-Derived Brain Organoids Create Functional Networks in Mice</h3>
+        <p class="news-blurb">Ruslan Rust was interviewed about a study in which human brain organoids transplanted into mice formed functional networks, and about how humanized models like these could help predict which therapies succeed in the clinic.</p>
+        <a href="https://www.the-scientist.com/human-derived-brain-organoids-create-functional-networks-in-mice-74996" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- The Transmitter: 17 May 2024 -->
+      <article class="news-card">
+        <a href="https://www.thetransmitter.org/neurodevelopment/rat-neurons-thrive-in-a-mouse-brain-world-testing-nature-versus-nurture/" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img" loading="lazy" src="Media_useful/news/the-transmitter.jpg" alt="The Transmitter preview: Rat neurons thrive in a mouse brain world, testing ‘nature versus nurture’" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">The Transmitter</span>
+          <span class="news-date">17 May 2024</span>
+        </div>
+        <span class="news-tag">Expert Commentary</span>
+        <h3 class="news-headline">Rat neurons thrive in a mouse brain world, testing ‘nature versus nurture’</h3>
+        <p class="news-blurb">Ruslan Rust shared his view on studies in which rat neurons wire into mouse brains, and on how these chimeric models could help explain the cell-environment interactions seen in cell therapies.</p>
+        <a href="https://www.thetransmitter.org/neurodevelopment/rat-neurons-thrive-in-a-mouse-brain-world-testing-nature-versus-nurture/" target="_blank" rel="noopener noreferrer" class="news-link">Read article <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+    </div>
+
+    <h3 class="news-subhead fade-in">Podcasts &amp; Interviews</h3>
+    <div class="news-grid cols-3 fade-in">
+
+      <!-- The Good Question Podcast: 8 Apr 2026 -->
+      <article class="news-card">
+        <a href="https://podcasts.apple.com/us/podcast/revolutionizing-brain-repair-stem-cell-innovations/id1582126361?i=1000760247165" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img square" loading="lazy" src="Media_useful/news/podcast-good-question.jpg" alt="The Good Question Podcast" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">The Good Question Podcast</span>
+          <span class="news-date">8 Apr 2026</span>
+        </div>
+        <span class="news-tag">Podcast</span>
+        <h3 class="news-headline">Revolutionizing Brain Repair: Stem Cell Innovations For Stroke &amp; Neurodegenerative Diseases</h3>
+        <p class="news-blurb">A conversation with Ruslan Rust about the lab's cell therapy program for stroke and neurodegeneration (23 min).</p>
+        <a href="https://podcasts.apple.com/us/podcast/revolutionizing-brain-repair-stem-cell-innovations/id1582126361?i=1000760247165" target="_blank" rel="noopener noreferrer" class="news-link">Listen <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Finding Genius Podcast: 11 Jan 2026 -->
+      <article class="news-card">
+        <a href="https://podcasts.apple.com/us/podcast/rebuilding-the-brain-stem-cell-therapies-for-stroke/id1169016854?i=1000744677210" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img square" loading="lazy" src="Media_useful/news/podcast-finding-genius.jpg" alt="Finding Genius Podcast" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">Finding Genius Podcast</span>
+          <span class="news-date">11 Jan 2026</span>
+        </div>
+        <span class="news-tag">Podcast</span>
+        <h3 class="news-headline">Rebuilding The Brain: Stem Cell Therapies For Stroke Recovery &amp; Neurodegeneration</h3>
+        <p class="news-blurb">Ruslan Rust on gene-edited iPSC therapies, crossing the blood-brain barrier, immune rejection, safety, and AI with single-cell data (24 min).</p>
+        <a href="https://podcasts.apple.com/us/podcast/rebuilding-the-brain-stem-cell-therapies-for-stroke/id1169016854?i=1000744677210" target="_blank" rel="noopener noreferrer" class="news-link">Listen <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+      <!-- Zoom O'Clock: 2 Nov 2021 -->
+      <article class="news-card">
+        <a href="https://podcasts.apple.com/us/podcast/tessy-antony-de-nassau-floessels-zoom-oclock-with-dr/id1542817684?i=1000540556887" target="_blank" rel="noopener noreferrer" class="news-card-imglink"><img class="news-card-img square" loading="lazy" src="Media_useful/news/podcast-zoom-oclock.jpg" alt="Zoom O&#x27;Clock" /></a>
+        <div class="news-card-top">
+          <span class="news-outlet">Zoom O'Clock</span>
+          <span class="news-date">2 Nov 2021</span>
+        </div>
+        <span class="news-tag">Podcast</span>
+        <h3 class="news-headline">Tessy Antony de Nassau Floessel's Zoom O'Clock with Dr. in Neuroscience Ruslan Rust</h3>
+        <p class="news-blurb">An interview from the Zurich years on animal research, the 3Rs, and why brain cell therapy is not yet ready for patients (40 min).</p>
+        <a href="https://podcasts.apple.com/us/podcast/tessy-antony-de-nassau-floessels-zoom-oclock-with-dr/id1542817684?i=1000540556887" target="_blank" rel="noopener noreferrer" class="news-link">Listen <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </article>
+
+    </div>
+
+    <h3 class="news-subhead fade-in">Lab News</h3>
+    <ul class="lab-news-list fade-in">
+      <li><span class="lab-news-date">Aug 2026</span><span><a href="https://reporter.nih.gov/project-details/11301662" target="_blank" rel="noopener noreferrer">NIH R01 awarded for functionally engineered pericytes for Alzheimer's disease</a> <span class="lab-news-source">NINDS, R01NS147362</span></span></li>
+      <li><span class="lab-news-date">Jun 2026</span><span>Beatriz Achón Buil defended her PhD thesis, "Gene-edited neural stem cell therapy for stroke" <span class="lab-news-source">University of Zurich</span></span></li>
+      <li><span class="lab-news-date">Feb 2026</span><span>Talk on pericyte-based cell therapy for Alzheimer's disease at the Epstein investigators meeting <span class="lab-news-source">Epstein Family Alzheimer's Research Collaboration</span></span></li>
+      <li><span class="lab-news-date">2025</span><span>Alzheimer's Breakthrough Award for functionally engineered pericytes to treat Alzheimer's disease <span class="lab-news-source">Epstein Family Foundation and Keck School of Medicine of USC</span></span></li>
+      <li><span class="lab-news-date">Nov 2025</span><span>Talk at SfN 2025 in San Diego on how neural xenografts support long-term recovery after stroke <span class="lab-news-source">Society for Neuroscience</span></span></li>
+      <li><span class="lab-news-date">Oct 2025</span><span>Invited lecture, "Pericyte-based therapy to treat Alzheimer's disease" <span class="lab-news-source">USC Alzheimer's Disease Research Center</span></span></li>
+      <li><span class="lab-news-date">May 2025</span><span>Zilkha Nights lecture, "Neural cell grafts for stroke recovery" <span class="lab-news-source">Zilkha Neurogenetic Institute</span></span></li>
+      <li><span class="lab-news-date">Dec 2024</span><span>Dean's Pilot Funding award for a brain shuttle for systemic delivery of stem cells in stroke mice <span class="lab-news-source">Keck School of Medicine of USC</span></span></li>
+      <li><span class="lab-news-date">Oct 2024</span><span>Talk at SfN 2024 in Chicago on neural xenografts and stroke recovery <span class="lab-news-source">Society for Neuroscience</span></span></li>
+      <li><span class="lab-news-date">2024</span><span>Invited lecture, "Next generation cell therapy for stroke", and BioArt Award for Scientific Excellence in Imaging <span class="lab-news-source">European Society for Clinical Investigation, Barcelona</span></span></li>
+    </ul>
+    <details class="lab-news-more fade-in">
+      <summary>Earlier news (2019 to 2023)</summary>
+      <ul class="lab-news-list">
+        <li><span class="lab-news-date">Sep 2023</span><span>SNSF Ambizione grant for nextSTEPS, next-generation stem cell therapy as an emerging paradigm for stroke <span class="lab-news-source">Swiss National Science Foundation</span></span></li>
+        <li><span class="lab-news-date">Aug 2023</span><span><a href="https://www.irem.uzh.ch/en/news/Dr.-Ruslan-Rust-appointed-Assistant-Professor.html" target="_blank" rel="noopener noreferrer">Ruslan Rust appointed Assistant Professor at the Keck School of Medicine of USC</a> <span class="lab-news-source">UZH Institute for Regenerative Medicine</span></span></li>
+        <li><span class="lab-news-date">Nov 2022</span><span><a href="https://znznews.ch/stem-cells-for-brain-regeneration" target="_blank" rel="noopener noreferrer">"Stem cells for brain regeneration", a feature by Christian Tackenberg and Ruslan Rust</a> <span class="lab-news-source">ZNZ News</span></span></li>
+        <li><span class="lab-news-date">Oct 2022</span><span>Vontobel Foundation grant for safe, off-the-shelf cells for the injured brain <span class="lab-news-source">Vontobel Foundation</span></span></li>
+        <li><span class="lab-news-date">2022</span><span>Invited lecture at MSN 2022 in Kuala Lumpur and talk at FENS 2022 in Paris on iPSC-based cell therapy for brain regeneration</span></li>
+        <li><span class="lab-news-date">Jun 2021</span><span><a href="https://www.irem.uzh.ch/en/archive/oldnews/Ruslan-Rust-receives-3RCC-Grant.html" target="_blank" rel="noopener noreferrer">3RCC grant for an experimental toolkit to evaluate cell-based therapies in the mouse brain</a> <span class="lab-news-source">UZH Institute for Regenerative Medicine</span></span></li>
+        <li><span class="lab-news-date">Dec 2020</span><span><a href="https://www.irem.uzh.ch/en/archive/oldnews/Ruslan-Rust-receives-SNF-Spark-Grant-to-develop-a-brain-shuttle-for-cell-therapies.html" target="_blank" rel="noopener noreferrer">SNF Spark grant to develop a brain shuttle for cell therapies</a> <span class="lab-news-source">UZH Institute for Regenerative Medicine</span></span></li>
+        <li><span class="lab-news-date">Apr 2020</span><span><a href="https://www.irem.uzh.ch/en/archive/oldnews/Two-IREM-scientists-selected-to-participate-in-70th-Nobel-Laureate-meeting.html" target="_blank" rel="noopener noreferrer">Selected to attend the 70th Lindau Nobel Laureate Meeting</a> <span class="lab-news-source">UZH Institute for Regenerative Medicine</span></span></li>
+        <li><span class="lab-news-date">2019</span><span>Invited lecture at CVB 2019 in Miami on Nogo-A targeted therapy for vascular repair after stroke</span></li>
+      </ul>
+    </details>
   </div>
 </section>
 
@@ -1684,7 +1870,7 @@
         <div class="team-location-badge usc">University of Southern California</div>
         <div class="team-pi-role">Principal Investigator</div>
         <div class="team-pi-name">Ruslan Rust</div>
-        <p class="team-pi-bio">Ruslan is an Assistant Professor of Neuroscience at the University of Southern California (USC). He previously served as principal investigator at the Institute for Regenerative Medicine at the University of Zurich. He completed his PhD at ETH Zurich in 2019, followed by postdoctoral training at the University of Zurich. His career has focused on developing regenerative therapies following experimental stroke in mice, combining preclinical research with molecular and genetic tools to advance cell therapies toward the clinical stage. In his free time, Ruslan enjoys outdoor activities, travel, sports, and playing guitar.</p>
+        <p class="team-pi-bio">Ruslan is an Assistant Professor of Neuroscience at the University of Southern California (USC). He previously served as principal investigator at the Institute for Regenerative Medicine at the University of Zurich. He completed his PhD at ETH Zurich in 2019, followed by postdoctoral training at the University of Zurich. His career has focused on developing regenerative therapies following experimental stroke in mice, combining preclinical research with molecular and genetic tools to advance cell therapies toward the clinical stage. In his free time, Ruslan enjoys outdoor activities, travel and sports.</p>
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;">
           <a href="https://keck.usc.edu/faculty-search/ruslan-rust/" target="_blank" class="btn btn-primary" style="font-size:0.83rem;padding:8px 16px;">USC Faculty Profile</a>
           <a href="#publications" class="btn btn-outline" style="font-size:0.83rem;padding:8px 16px;">Publications</a>
@@ -1692,19 +1878,33 @@
       </div>
     </div>
 
-    <!-- Lab members grid -->
-    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:8px;margin-top:52px;">Current and Previous Lab Members</h3>
-    <div class="team-location-row fade-in">
-      <span class="team-location-dot usc"></span><span class="team-loc-label">University of Southern California (USC)</span>
-      <span class="team-location-dot uzh" style="margin-left:20px;"></span><span class="team-loc-label">University of Zurich (UZH)</span>
+    <!-- Join the lab -->
+    <div class="hiring-callout fade-in">
+      <div>
+        <div class="hiring-label">Join the lab</div>
+        <p>We're always looking for motivated people at all career stages. If you're interested in our work, please reach out.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
     </div>
 
+    <!-- Lab members: current -->
+    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:8px;margin-top:52px;">Current Lab Members</h3>
     <div class="team-grid">
 
-      <!-- USC members -->
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Mingzi.jpeg" alt="Mingzi Zhang" loading="lazy" />
+          <img src="Media_useful/photos_team/allison.jpg" alt="Allison Brookshier" loading="lazy" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">Postdoc</div>
+          <div class="team-card-name">Allison Brookshier</div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/photos_team/mingzi.jpg" alt="Mingzi Zhang" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge usc">USC</div>
@@ -1716,7 +1916,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Woosung.jpg" alt="Woosung Ahn" loading="lazy" />
+          <img src="Media_useful/photos_team/woosung.jpg" alt="Woosung Ahn" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge usc">USC</div>
@@ -1728,19 +1928,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Yazi.jpg" alt="Yazi Huang" loading="lazy" />
-        </div>
-        <div class="team-card-body">
-          <div class="team-location-badge usc">USC</div>
-          <div class="team-card-role">Research Associate</div>
-          <div class="team-card-name">Yazi Huang</div>
-          <p class="team-card-bio">Investigates CADASIL cell-specific changes and their effects on disease pathology in the brain vasculature.</p>
-        </div>
-      </div>
-
-      <div class="team-card fade-in">
-        <div class="team-card-img">
-          <img src="Media_useful/photos_students/Gavin.jpg" alt="Gavin Spillard" loading="lazy" />
+          <img src="Media_useful/photos_team/gavin.jpg" alt="Gavin Spillard" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge usc">USC</div>
@@ -1750,10 +1938,31 @@
         </div>
       </div>
 
-      <!-- USC & UZH -->
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Portrait_R_Weber copy 2.jpg" alt="Rebecca Weber" loading="lazy" />
+          <img src="Media_useful/photos_team/russell.jpg" alt="Russell Kuo" loading="lazy" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">BUGS Student</div>
+          <div class="team-card-name">Russell Kuo</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Lab members: previous -->
+    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:8px;margin-top:52px;">Previous Lab Members</h3>
+    <div class="team-location-row fade-in">
+      <span class="team-location-dot usc"></span><span class="team-loc-label">University of Southern California (USC)</span>
+      <span class="team-location-dot uzh" style="margin-left:20px;"></span><span class="team-loc-label">University of Zurich (UZH)</span>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/photos_team/rebecca.jpg" alt="Rebecca Weber" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;">
@@ -1766,10 +1975,21 @@
         </div>
       </div>
 
-      <!-- UZH members -->
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Bea.jpg" alt="Beatriz Achón Buil" loading="lazy" />
+          <img src="Media_useful/photos_team/yazi.jpg" alt="Yazi Huang" loading="lazy" />
+        </div>
+        <div class="team-card-body">
+          <div class="team-location-badge usc">USC</div>
+          <div class="team-card-role">Research Associate</div>
+          <div class="team-card-name">Yazi Huang</div>
+          <p class="team-card-bio">Investigates CADASIL cell-specific changes and their effects on disease pathology in the brain vasculature.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-card-img">
+          <img src="Media_useful/photos_team/bea.jpg" alt="Beatriz Achón Buil" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1781,7 +2001,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Nora.png" alt="Nora Rentsch" loading="lazy" />
+          <img src="Media_useful/photos_team/nora.jpg" alt="Nora Rentsch" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1793,7 +2013,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Stephanie.png" alt="Stefanie Schuknecht" loading="lazy" />
+          <img src="Media_useful/photos_team/stefanie.jpg" alt="Stefanie Schuknecht" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1804,7 +2024,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Chantal.png" alt="Chantal Bodenmann" loading="lazy" />
+          <img src="Media_useful/photos_team/chantal.jpg" alt="Chantal Bodenmann" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1816,7 +2036,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Geertje.png" alt="Geertje Mulders" loading="lazy" />
+          <img src="Media_useful/photos_team/geertje.jpg" alt="Geertje Mulders" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1828,7 +2048,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Lisa.jpeg" alt="Lisa Groennert" loading="lazy" />
+          <img src="Media_useful/photos_team/lisa.jpg" alt="Lisa Groennert" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1840,7 +2060,7 @@
 
       <div class="team-card fade-in">
         <div class="team-card-img">
-          <img src="Media_useful/photos_students/Siri.jpeg" alt="Siri Peter" loading="lazy" />
+          <img src="Media_useful/photos_team/siri.jpg" alt="Siri Peter" loading="lazy" />
         </div>
         <div class="team-card-body">
           <div class="team-location-badge uzh">UZH</div>
@@ -1849,6 +2069,14 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Lab life -->
+    <h3 class="fade-in" style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--text);margin-bottom:8px;margin-top:52px;">Lab Life</h3>
+    <div class="lab-life-grid fade-in">
+      <img src="Media_useful/photos_lab/lab-team-usc.jpg" alt="The Rust Lab team at USC" loading="lazy" />
+      <img src="Media_useful/photos_lab/lab-hike.jpg" alt="The lab on a hiking outing above a lake" loading="lazy" />
+      <img src="Media_useful/photos_lab/lab-dinner.jpg" alt="Lab dinner together" loading="lazy" />
     </div>
 
     <!-- Collaborate banner -->
@@ -1980,27 +2208,27 @@
       <div class="funding-carousel-wrap">
         <div class="funding-carousel-track" style="animation-duration:26s;">
           <!-- Set 1 -->
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/USC%20logo%20-%20Google%20Search/imgi_199_USC-Logo.png" alt="USC" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/KSOM%20logo%20keck%20school%20of%20medicine%20-%20Google%20Search/imgi_76_keck-logo.png" alt="Keck School of Medicine of USC" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/UCSD%20logo%20-%20Google%20Search/imgi_154_UCSD-Logo.png" alt="UCSD" style="height:82px;" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/stanford%20logo%20-%20Google%20Search/imgi_153_stanford-university-logo.png" alt="Stanford University" style="height:61px;" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/UZH%20zurich%20logo%20-%20Google%20Search/imgi_134_logo-1552576739.png" alt="University of Zurich" style="height:82px;" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/ETH%20zurich%20logo%20-%20Google%20Search/imgi_138_ethz_logo_black.png" alt="ETH Zurich" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/CRTD%20logo%20-%20Google%20Search/imgi_124_NEWLOGO_CRTD_high_web.png" alt="CRTD TU Dresden" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/Leibniz%20institue%20of%20polymer%20reseach%20logo%20-%20Google%20Search/imgi_134_2018__IPF_Logo.png" alt="Leibniz Institute of Polymer Research" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/university%20of%20nevada%20las%20vegas%20logo%20-%20Google%20Search/imgi_155_1280px-University_of_Nevada%252C_Las_Vegas_logo.svg.png" alt="University of Nevada Las Vegas" style="height:51px;" /></div>
-          <div class="funder-logo-item"><img src="Media_useful/photos_collab_institutes/university%20of%20queensland%20logo%20-%20Google%20Search/imgi_148_The_University_Of_Queensland_logo_logotype.png" alt="University of Queensland" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-usc.png" alt="USC" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-keck-school-of-medicine-of-usc.png" alt="Keck School of Medicine of USC" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-ucsd.png" alt="UCSD" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-stanford-university.png" alt="Stanford University" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-university-of-zurich.png" alt="University of Zurich" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-eth-zurich.png" alt="ETH Zurich" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-crtd-tu-dresden.png" alt="CRTD TU Dresden" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-leibniz-institute-of-polymer-research.png" alt="Leibniz Institute of Polymer Research" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-university-of-nevada-las-vegas.png" alt="University of Nevada Las Vegas" /></div>
+          <div class="funder-logo-item"><img src="Media_useful/logos/inst-tile-university-of-queensland.png" alt="University of Queensland" /></div>
           <!-- Set 2 — duplicate for seamless loop -->
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/USC%20logo%20-%20Google%20Search/imgi_199_USC-Logo.png" alt="" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/KSOM%20logo%20keck%20school%20of%20medicine%20-%20Google%20Search/imgi_76_keck-logo.png" alt="" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/UCSD%20logo%20-%20Google%20Search/imgi_154_UCSD-Logo.png" alt="" style="height:82px;" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/stanford%20logo%20-%20Google%20Search/imgi_153_stanford-university-logo.png" alt="" style="height:61px;" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/UZH%20zurich%20logo%20-%20Google%20Search/imgi_134_logo-1552576739.png" alt="" style="height:82px;" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/ETH%20zurich%20logo%20-%20Google%20Search/imgi_138_ethz_logo_black.png" alt="" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/CRTD%20logo%20-%20Google%20Search/imgi_124_NEWLOGO_CRTD_high_web.png" alt="" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/Leibniz%20institue%20of%20polymer%20reseach%20logo%20-%20Google%20Search/imgi_134_2018__IPF_Logo.png" alt="" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/university%20of%20nevada%20las%20vegas%20logo%20-%20Google%20Search/imgi_155_1280px-University_of_Nevada%252C_Las_Vegas_logo.svg.png" alt="" style="height:51px;" /></div>
-          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/photos_collab_institutes/university%20of%20queensland%20logo%20-%20Google%20Search/imgi_148_The_University_Of_Queensland_logo_logotype.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-usc.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-keck-school-of-medicine-of-usc.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-ucsd.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-stanford-university.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-university-of-zurich.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-eth-zurich.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-crtd-tu-dresden.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-leibniz-institute-of-polymer-research.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-university-of-nevada-las-vegas.png" alt="" /></div>
+          <div class="funder-logo-item" aria-hidden="true"><img src="Media_useful/logos/inst-tile-university-of-queensland.png" alt="" /></div>
         </div>
       </div>
     </div>
@@ -2051,7 +2279,7 @@
 
         <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
           <div class="contact-label" style="margin-bottom:10px;">Collaborate or Work With Us</div>
-          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;">We actively participate in and welcome collaborations with labs sharing complementary interests. Prospective lab members (PhD, postdoc) are also welcome to reach out.</p>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;">We actively participate in and welcome collaborations with labs sharing complementary interests. Prospective lab members (PhD, postdoc) are also welcome to reach out. We're always looking for motivated people at all career stages, so if you're interested, please reach out.</p>
         </div>
       </div>
 
@@ -2086,83 +2314,83 @@
       <div class="funding-carousel-track">
         <!-- Set 1 -->
         <a href="https://www.nih.gov" target="_blank" rel="noopener noreferrer" class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/NIH_Master_Logo_Vertical_2Color.png" alt="National Institutes of Health" />
+          <img src="Media_useful/logos/funder-tile-national-institutes-of-health.png" alt="National Institutes of Health" />
         </a>
-        <div class="funder-logo-item lg">
-          <img src="Media_useful/photos_fundations/SNSF.jpg" alt="Swiss National Science Foundation" />
+        <div class="funder-logo-item">
+          <img src="Media_useful/logos/funder-tile-swiss-national-science-foundation.png" alt="Swiss National Science Foundation" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/AD-Breakthrough_award.png" alt="Keck Medicine of USC — Alzheimer's Breakthrough Award" />
+          <img src="Media_useful/logos/funder-tile-keck-medicine-of-usc-alzheimer-s-breakthrough-aw.png" alt="Keck Medicine of USC — Alzheimer's Breakthrough Award" />
         </div>
         <a href="https://www.vontobel-stiftung.ch/en-ch/" target="_blank" rel="noopener noreferrer" class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Vontobel_Stiftung_RGB_black.png" alt="Vontobel Foundation" />
+          <img src="Media_useful/logos/funder-tile-vontobel-foundation.png" alt="Vontobel Foundation" />
         </a>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Maxi.png" alt="Mäxi Foundation" />
+          <img src="Media_useful/logos/funder-tile-m-xi-foundation.png" alt="Mäxi Foundation" />
         </div>
         <a href="https://swiss3rcc.org" target="_blank" rel="noopener noreferrer" class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/3rcc.png" alt="Swiss 3R Competence Centre" />
+          <img src="Media_useful/logos/funder-tile-swiss-3r-competence-centre.png" alt="Swiss 3R Competence Centre" />
         </a>
-        <div class="funder-logo-item lg">
-          <img src="Media_useful/photos_fundations/RHF.png" alt="ResearchHub Foundation" />
+        <div class="funder-logo-item">
+          <img src="Media_useful/logos/funder-tile-researchhub-foundation.png" alt="ResearchHub Foundation" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Studienstiftung.png" alt="Studienstiftung des deutschen Volkes" />
+          <img src="Media_useful/logos/funder-tile-studienstiftung-des-deutschen-volkes.png" alt="Studienstiftung des deutschen Volkes" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/IREM_support.jpg" alt="Institute for Regenerative Medicine — IREM" />
+          <img src="Media_useful/logos/funder-tile-institute-for-regenerative-medicine-irem.png" alt="Institute for Regenerative Medicine — IREM" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.22_PM.png" alt="Keck Medicine of USC — Dean's Pilot" />
+          <img src="Media_useful/logos/funder-tile-keck-medicine-of-usc-dean-s-pilot.png" alt="Keck Medicine of USC — Dean's Pilot" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.44_PM.png" alt="FNSNF Spark" />
+          <img src="Media_useful/logos/funder-tile-fnsnf-spark.png" alt="FNSNF Spark" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.58_PM.png" alt="ZNZ — Zentrum für Neurowissenschaften Zürich" />
+          <img src="Media_useful/logos/funder-tile-znz-zentrum-f-r-neurowissenschaften-z-rich.png" alt="ZNZ — Zentrum für Neurowissenschaften Zürich" />
         </div>
         <div class="funder-logo-item">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.25.03_PM.png" alt="Novartis Foundation for medical-biological research" />
+          <img src="Media_useful/logos/funder-tile-novartis-foundation-for-medical-biological-resea.png" alt="Novartis Foundation for medical-biological research" />
         </div>
         <!-- Set 2 — duplicate for seamless loop -->
         <a href="https://www.nih.gov" target="_blank" rel="noopener noreferrer" class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/NIH_Master_Logo_Vertical_2Color.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-national-institutes-of-health.png" alt="" />
         </a>
-        <div class="funder-logo-item lg" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/SNSF.jpg" alt="" />
+        <div class="funder-logo-item" aria-hidden="true">
+          <img src="Media_useful/logos/funder-tile-swiss-national-science-foundation.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/AD-Breakthrough_award.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-keck-medicine-of-usc-alzheimer-s-breakthrough-aw.png" alt="" />
         </div>
         <a href="https://www.vontobel-stiftung.ch/en-ch/" target="_blank" rel="noopener noreferrer" class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Vontobel_Stiftung_RGB_black.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-vontobel-foundation.png" alt="" />
         </a>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Maxi.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-m-xi-foundation.png" alt="" />
         </div>
         <a href="https://swiss3rcc.org" target="_blank" rel="noopener noreferrer" class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/3rcc.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-swiss-3r-competence-centre.png" alt="" />
         </a>
-        <div class="funder-logo-item lg" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/RHF.png" alt="" />
+        <div class="funder-logo-item" aria-hidden="true">
+          <img src="Media_useful/logos/funder-tile-researchhub-foundation.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Studienstiftung.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-studienstiftung-des-deutschen-volkes.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/IREM_support.jpg" alt="" />
+          <img src="Media_useful/logos/funder-tile-institute-for-regenerative-medicine-irem.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.22_PM.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-keck-medicine-of-usc-dean-s-pilot.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.44_PM.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-fnsnf-spark.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.24.58_PM.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-znz-zentrum-f-r-neurowissenschaften-z-rich.png" alt="" />
         </div>
         <div class="funder-logo-item" aria-hidden="true">
-          <img src="Media_useful/photos_fundations/Screenshot_2026-03-05_at_2.25.03_PM.png" alt="" />
+          <img src="Media_useful/logos/funder-tile-novartis-foundation-for-medical-biological-resea.png" alt="" />
         </div>
       </div>
     </div>
